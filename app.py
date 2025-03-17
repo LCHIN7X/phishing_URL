@@ -9,7 +9,7 @@ app = Flask(__name__)
 file_path = "C:/Users/night/Documents/CS/phishing_URL/phishing_site_urls.csv"
 df = pd.read_csv(file_path,encoding="ISO-8859-1")
 
-
+model = pickle.load(open('phishing.pkl','rb'))
 
 @app.route('/')
 def home():
