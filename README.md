@@ -1,3 +1,7 @@
+# How to run 
+## Run this step by step in terminal
+1.
+
 # Output
 
 ![image_alt](https://github.com/LCHIN7X/phishing_URL/blob/main/Screenshot%202025-06-29%20185012.png?raw=true)
