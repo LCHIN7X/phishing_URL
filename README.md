@@ -1,3 +1,4 @@
+
 # Installation & Setup
 ## 1.Clone the Repository
     git clone https://github.com/LCHIN7X/phishing_URL.git
@@ -15,5 +16,6 @@
 
 After input the link
 ![image_alt](https://github.com/LCHIN7X/phishing_URL/blob/main/Screenshot%202025-06-29%20185029.png?raw=true)
+
 
 
