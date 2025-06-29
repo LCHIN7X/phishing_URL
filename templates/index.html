@@ -2,62 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phishing URL Prediction</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styless.css') }}">
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styless.css') }}">
 </head>
 <body>
 
     <div id="flex">
         <form action="/phishing" method="get">
-
             <div class="topic">
-                <h1>Enter the URL</h1>
-                <h4>check the url is safe to use!</h4>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h1>Check the URL</h1>
+                <br>
+                <h4>Make sure the link is safe to use!</h4>
             </div>
 
             <div class="input-submit">
-                <input type="text" name="url" id="url" placeholder="https://google.com" required>
-                <input type="submit" value="submit" id="submit">
+                <input type="text" name="url" id="url" placeholder="https://.com" required>
+                <input type="submit" value="Submit" id="submit">
             </div>
-
         </form>
-        <div class="answers">
-            <div class="url"></div>
-
-            <div class="non-phish">
-                <span class="circle">
-                    <h2 id="non-phish-percent">0%</h2>
-                </span>
-                <h3>Non-Phishing Percentage</h3>
-            </div>
-            <div class="phish">
-                <span class="circle">
-                    <h2 id="phish-percent">0%</h2>
-                </span>
-                <h3>Phishing Percentage</h3>
-            </div>
-        </div>
     </div>
 
+    {% if url %}
+    <div class="answers">
+    
+        <div class="combined-circle">
+            <div class="circle-text">
+                <p id="circle-percent">0%</p>
+                <p id="circle-label">Safe</p>
+            </div>
+        </div>
+
+  
+        <div class="url-text">
+            {{ url }}
+        </div>
+        <br>
+        <br>
+        <button class="button1" id="button1" onclick="window.open('{{ url }}', '_blank')">Browse the page</button>
+    </div>
+    {% endif %}
+
     <script>
-        let inputSection = document.querySelector('.url');
-        let phishPercent = document.querySelector('#phish-percent');
-        let nonPhishPercent = document.querySelector('#non-phish-percent');
-        inputSection.textContent = 'https://google.com';
-        let phish = parseFloat('{{ phish }}');
-        let non_phish = parseFloat('{{ non_phish }}');
-        let url = '{{url}}';
+        const phish = parseFloat('{{ phish }}');
+        const nonPhish = parseFloat('{{ non_phish }}');
+        const circle = document.querySelector(".combined-circle");
+        const percentEl = document.getElementById("circle-percent");
+        const labelEl = document.getElementById("circle-label");
 
-        console.log(phish + non_phish + url)
+        if (!isNaN(phish) && !isNaN(nonPhish)) {
+            const greenAngle = nonPhish * 3.6;
+            circle.style.background = `conic-gradient(
+                #83ecff 0deg ${greenAngle}deg,
+                rgb(255, 255, 75) ${greenAngle}deg 360deg
+            )`;
 
-        if (non_phish) {
-            phishPercent.textContent = phish.toFixed(2) + '%';
-            nonPhishPercent.textContent = non_phish.toFixed(2) + '%';
-            inputSection.textContent = url;
+            if (phish > nonPhish) {
+                percentEl.textContent = `${phish.toFixed(2)}%`;
+                labelEl.textContent = `Phishing`;
+            } else {
+                percentEl.textContent = `${nonPhish.toFixed(2)}%`;
+                labelEl.textContent = `Safe`;
+            }
         }
-
     </script>
 
 </body>
