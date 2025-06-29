@@ -25,17 +25,18 @@
         </form>
         <div class="answers">
             <div class="url"></div>
-            <div class="phish">
-                <span class="circle">
-                    <h2 id="phish-percent">0%</h2>
-                </span>
-                <h3>Phishing Percentage</h3>
-            </div>
+
             <div class="non-phish">
                 <span class="circle">
                     <h2 id="non-phish-percent">0%</h2>
                 </span>
                 <h3>Non-Phishing Percentage</h3>
+            </div>
+            <div class="phish">
+                <span class="circle">
+                    <h2 id="phish-percent">0%</h2>
+                </span>
+                <h3>Phishing Percentage</h3>
             </div>
         </div>
     </div>
@@ -45,15 +46,15 @@
         let phishPercent = document.querySelector('#phish-percent');
         let nonPhishPercent = document.querySelector('#non-phish-percent');
         inputSection.textContent = 'https://google.com';
-        let phish = '{{phish}}';
-        let non_phish = '{{non_phish}}';
+        let phish = parseFloat('{{ phish }}');
+        let non_phish = parseFloat('{{ non_phish }}');
         let url = '{{url}}';
 
         console.log(phish + non_phish + url)
 
         if (non_phish) {
-            phishPercent.textContent = phish + '%';
-            nonPhishPercent.textContent = non_phish + '%';
+            phishPercent.textContent = phish.toFixed(2) + '%';
+            nonPhishPercent.textContent = non_phish.toFixed(2) + '%';
             inputSection.textContent = url;
         }
 

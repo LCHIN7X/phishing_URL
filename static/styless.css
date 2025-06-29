@@ -26,7 +26,7 @@ body {
 
 :root{
     --bg-color: #000;
-    --accent-color:#8dffb3;
+    --accent-color:#83ecff;
     --width: 30rem;
 }
 
@@ -150,29 +150,12 @@ form {
 }
 
 .url {
-    color: #8dffb3;
+    color: #83ecff;
     font-size: 1.2rem;
     font-family: sans-serif;
 }
 
-.delete-rules a {
-    display: block;
-    padding: 0.5rem auto;
-    text-decoration: none;
-    text-align: center;
-    font-size: 2rem;
-    width: 100%;
-    font-family: sans-serif;
-    color: var(--accent-color);
-    transition: all 0.25s;
-    border-radius: 0 0 0.8rem 0.8rem;
-    padding: 2rem auto;
-}
 
-.delete-rules a:hover {
-    background-color: var(--accent-color);
-    color: black;
-}
 
 @media only screen and (max-width: 1000px) {
     .circle {
