@@ -4,9 +4,9 @@
     git clone https://github.com/LCHIN7X/phishing_URL.git
 #### 2.Install Dependencies
     pip install -r requirements.txt
-#### 3.Run the application
+#### 3.Run the Application
     python app.py
-#### 4.Access the website
+#### 4.Access the Website
     http://127.0.0.1:5000/
 
 
